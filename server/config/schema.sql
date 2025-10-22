@@ -10,3 +10,11 @@ CREATE TABLE IF NOT EXISTS categories (
   updated_at TIMESTAMPTZ DEFAULT now()
 );
 
+CREATE TABLE IF NOT EXISTS category_items (
+  id SERIAL PRIMARY KEY,
+  category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE,
+  slug TEXT UNIQUE NOT NULL,
+  category_name TEXT NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT now(),
+  updated_at TIMESTAMPTZ DEFAULT now()
+);
